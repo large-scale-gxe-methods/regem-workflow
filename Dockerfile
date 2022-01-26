@@ -24,9 +24,9 @@ ENV LIBRARY_PATH=/opt/intel/compilers_and_libraries_2019.3.199/linux/tbb/lib/int
 ENV MKLROOT=/opt/intel/compilers_and_libraries_2019.3.199/linux/mkl
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PKG_CONFIG_PATH=/opt/intel/compilers_and_libraries_2019.3.199/linux/mkl/bin/pkgconfig
-RUN wget -q https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz && \
-  tar -xzf boost_1_71_0.tar.gz && \
-  cd boost_1_71_0 && \
+RUN wget -q https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz && \
+  tar -xzf boost_1_78_0.tar.gz && \
+  cd boost_1_78_0 && \
   ./bootstrap.sh && \
   ./b2 install
 
@@ -35,8 +35,9 @@ RUN wget -q https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.t
 ADD https://api.github.com/repos/large-scale-gxe-methods/REGEM/git/refs/heads version.json
 RUN apt-get update && apt-get -y install git make libzstd-dev && \
   git clone https://github.com/large-scale-gxe-methods/REGEM && \
-  cd /REGEM/src && \
+  cd /REGEM && \
   git checkout dev && \
+  cd src && \
   env && \
   pwd && \
   ls -l && \
