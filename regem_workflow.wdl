@@ -1,4 +1,33 @@
-task run_regem_v10 {
+workflow regem_wf {
+
+	File inputfile
+	String exposure_names
+	String? int_covar_names
+	String? output_style = "meta"
+	Int? memory = 5
+	Int? cpu = 1
+	Int? disk = 10
+	Int? preemptible = 0
+
+	call run_regem {
+		input:
+			inputfile = inputfile,
+			exposure_names = exposure_names,
+			int_covar_names = int_covar_names,
+			output_style = output_style,
+			memory = memory,
+			cpu = cpu,
+			disk = disk,
+			preemptible = preemptible
+	}
+
+	output {
+		output_sumstats: run_regem.out
+	}
+
+}
+
+task run_regem {
 
 	File inputfile
 	String exposure_names
@@ -8,11 +37,10 @@ task run_regem_v10 {
 	Int cpu
 	Int disk
 	Int preemptible
-	Int monitoring_freq
 
 	command {
-		dstat -c -d -m --nocolor ${monitoring_freq} > system_resource_usage.log &
-		atop -x -P PRM ${monitoring_freq} | grep '(REGEM)' > process_resource_usage.log &
+		dstat -c -d -m --nocolor > system_resource_usage.log &
+		atop -x -P PRM | grep '(REGEM)' > process_resource_usage.log &
 
 		/REGEM/REGEM \
 			--input-file ${inputfile} \

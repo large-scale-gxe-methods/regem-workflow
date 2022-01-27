@@ -1,0 +1,5 @@
+{
+  "regem_wf.inputfile": "testfiles/my_example.out",
+  "regem_wf.exposure_names": "cov1",
+  "regem_wf.int_covar_names": "cov2"
+}
