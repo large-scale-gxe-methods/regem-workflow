@@ -51,7 +51,7 @@ task run_regem {
 	}
 
 	runtime {
-		docker: "quay.io/duytpm16/regem-workflow:latest"
+		docker: "quay.io/large-scale-gxe-methods/regem-workflow:latest"
 		memory: "${memory} GB"
 		cpu: "${cpu}"
 		disks: "local-disk ${disk} HDD"
