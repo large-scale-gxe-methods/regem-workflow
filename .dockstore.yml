@@ -1,0 +1,7 @@
+version: 1.2
+workflows:
+  - name: regem-workflow
+    subclass: WDL
+    primaryDescriptorPath: /regem_workflow.wdl
+    testParameterFiles: 
+      - testfiles/test.json
