@@ -22,7 +22,7 @@ workflow regem_wf {
 	}
 
 	output {
-		output_sumstats: run_regem.out
+		File output_sumstats = run_regem.out
 	}
 
 }
