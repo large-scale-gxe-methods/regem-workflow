@@ -32,11 +32,11 @@ task run_regem {
 	File inputfile
 	String exposure_names
 	String? int_covar_names
-	String output_style
-	Int memory
-	Int cpu
-	Int disk
-	Int preemptible
+	String? output_style
+	Int? memory
+	Int? cpu
+	Int? disk
+	Int? preemptible
 
 	command {
 		dstat -c -d -m --nocolor > system_resource_usage.log &
