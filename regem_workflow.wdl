@@ -25,6 +25,17 @@ workflow regem_wf {
 		File output_sumstats = run_regem.out
 	}
 
+	parameter_meta {
+		inputfile: "Tabular output file containing summary statistics from a GEM run (must have been run using --output-style 'full')."
+		exposure_names: "Name(s) of the exposures to be tested for interaction (space-delimited)."
+		int_covar_names: "Name(s) of any covariates for which genotype interactions should be adjusted (space-delimited)."
+		output_style: "Optional string specifying the output columns to include: minimum (marginal and GxE estimates), meta (minimum plus main G and GxCovariate terms), or full (meta plus additionals fields necessary for re-analysis based on summary statistics alone). Default is 'minimum'."
+		memory: "Requested memory (in GB)."
+		cpu: "Minimum number of requested cores."
+		disk: "Requested disk space (in GB)."
+		preemptible: "Optional number of attempts using a preemptible machine from Google Cloud prior to falling back to a standard machine (default = 0, i.e., don't use preemptible)."
+	}
+
 }
 
 task run_regem {
