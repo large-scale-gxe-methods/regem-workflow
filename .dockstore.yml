@@ -4,4 +4,4 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /regem_workflow.wdl
     testParameterFiles: 
-      - testfiles/test.json
+      - /testfiles/test.json
